@@ -1,12 +1,21 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Child from "./components/Child.jsx"
 
 function App() {
 
   const [count, setCount] = useState(0);
 
-  console.log("ParentApp rendered")
+  useEffect(()=>{
+    console.log("Use Effect Executed");
+
+    return ()=>{
+      console.log("cleanup Executed");
+    };
+  },[]);
+  
+  console.log("App Rendered");
+  
   return (
     
     <div>
@@ -14,7 +23,7 @@ function App() {
       <h1>Parent Count : {count}</h1>
       <Child count = {count} setCount = {setCount}/>
     </div>
-  )
+  );
 }
 
 export default App
