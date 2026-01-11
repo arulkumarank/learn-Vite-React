@@ -10,10 +10,9 @@ function App() {
   return (
     
     <div>
-      <h1>Hello, World!</h1>
-      <p>count = {count}</p>
-      <button onClick={()=> setCount(count+1)}>+</button>
-      <Child count = {count}/>
+      <h1>Lifting State Up</h1>
+      <h1>Parent Count : {count}</h1>
+      <Child count = {count} setCount = {setCount}/>
     </div>
   )
 }
