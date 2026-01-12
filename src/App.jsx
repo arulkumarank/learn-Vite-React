@@ -1,8 +1,11 @@
 import './App.css'
 import {useRef, useEffect, useState } from 'react'
+import UserContext from './context/UserContext.jsx';
 import Child from "./components/Child.jsx"
 
 function App() {
+
+  const user = 'Arul';
 
   const inputRef = useRef(null);
   const renderCount = useRef(0);
@@ -23,14 +26,17 @@ function App() {
   return (
     
     <div>
-      <h1>UseRef Demo</h1>
+      <h1>UseContext Demo</h1>
 
-      <input style={{padding:'8px'}} ref= {inputRef} placeholder='Type something'/>
-      <button onClick={()=>inputRef.current.focus()}>Focus input</button>
+      <UserContext.Provider value = {user}>
 
+        <input style={{padding:'8px'}} ref= {inputRef} placeholder='Type something'/>
+        <button onClick={()=>inputRef.current.focus()}>Focus input</button>
 
-      <h1>State Count : {count}</h1>
-      <Child count = {count} setCount = {setCount}/>
+        <h1>State Count : {count}</h1>
+        <Child count = {count} setCount = {setCount}/>
+      
+      </UserContext.Provider>
     </div>
   );
 }
